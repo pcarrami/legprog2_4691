@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.edu.cibertec.matricula.entidades.Tutor;
+import com.edu.cibertec.matricula.servicio.DepartamentoService;
 import com.edu.cibertec.matricula.servicio.ProvinciaService;
 import com.edu.cibertec.matricula.servicio.TutorService;
 
@@ -25,6 +26,7 @@ public class TutorController extends HttpServlet {
 	final String url_listar = "./vistas/tutores/list.jsp";
 	final String url_add = "./vistas/tutores/add.jsp";
 	final String url_edit = "./vistas/tutores/edit.jsp";
+	final String url_report = "./vistas/tutores/report.jsp";
 	TutorService service = null;
 	List<Tutor> lista =  null;
 	Tutor obj = null;
@@ -122,6 +124,11 @@ public class TutorController extends HttpServlet {
 				acceso = url_listar;
 				service = new TutorService();
 				lista = service.buscar(valor);
+				request.setAttribute("lista", lista);
+			}else if(accion.equalsIgnoreCase("report")) {
+				acceso = url_report;
+				service = new TutorService();
+				lista = service.listar();
 				request.setAttribute("lista", lista);
 			}
 			

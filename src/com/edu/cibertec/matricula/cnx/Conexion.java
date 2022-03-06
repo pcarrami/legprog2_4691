@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 
 public class Conexion {
 	
-	private static String url ="jdbc:mysql://localhost:3306/cibertec2";
+	private static String url ="jdbc:mysql://localhost:3306/cibertec";
 	//private static String url ="jdbc:mysql://cibertec.cepy5qnydcf5.us-east-1.rds.amazonaws.com/cibertec";
 	private static String user ="root";
-	private static String pass = "mysql";
+	private static String pass = "123456";
 	private static String driver = "com.mysql.cj.jdbc.Driver";
 	
 	Connection conn =  null;

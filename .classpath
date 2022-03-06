@@ -14,5 +14,24 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-8.0.25.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.8.3-kuali-4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-annotation-processors-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-chart-customizers-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-chart-themes-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-custom-visualization-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-fonts-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-functions-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-javaflow-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jasperreports-metadata-6.17.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/joda-time-2.10.13.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-beans-5.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-core-5.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-jcl-5.2.16.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tools.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -23,6 +23,7 @@ public class DepartamentoController extends HttpServlet {
 	final String url_listar = "./vistas/departamentos/list.jsp";
 	final String url_add = "./vistas/departamentos/add.jsp";
 	final String url_edit = "./vistas/departamentos/edit.jsp";
+	final String url_report = "./vistas/departamentos/report.jsp";
 	DepartamentoService service = null;
 	List<Departamento> lista =  null;
 	Departamento obj = null;
@@ -83,6 +84,11 @@ public class DepartamentoController extends HttpServlet {
 				acceso = url_listar;
 				service = new DepartamentoService();
 				lista = service.buscar(valor);
+				request.setAttribute("lista", lista);
+			}else if(accion.equalsIgnoreCase("report")) {
+				acceso = url_report;
+				service = new DepartamentoService();
+				lista = service.listar();
 				request.setAttribute("lista", lista);
 			}
 			

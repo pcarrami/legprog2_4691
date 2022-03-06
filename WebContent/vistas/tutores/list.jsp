@@ -16,6 +16,7 @@
 			<form class="form-inline" action="./tutores" method="post">
 				<input class="form-control" type="search" name="txt_buscar" value="<%=valor%>">
 				<input class="btn btn-outline-success" type="submit" name="accion" value="Buscar">
+				<a class="btn btn-outline-success" href="./tutores?accion=report" target="_blank">Reporte</a>
 			</form>
 			
 		</div>
