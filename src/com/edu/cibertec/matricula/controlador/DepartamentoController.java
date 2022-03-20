@@ -34,6 +34,7 @@ public class DepartamentoController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acceso = "";
+		valor=request.getParameter("txt_buscar")==null?"":request.getParameter("txt_buscar");
 		String accion = request.getParameter("accion");
 		try {
 			if(accion.equalsIgnoreCase("listar")) {

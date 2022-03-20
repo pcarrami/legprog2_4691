@@ -15,6 +15,7 @@ import com.edu.cibertec.matricula.entidades.Tutor;
 import com.edu.cibertec.matricula.servicio.DepartamentoService;
 import com.edu.cibertec.matricula.servicio.ProvinciaService;
 import com.edu.cibertec.matricula.servicio.TutorService;
+import com.edu.cibertec.matricula.utils.Utils;
 
 /**
  * Servlet implementation class TutorController
@@ -27,6 +28,7 @@ public class TutorController extends HttpServlet {
 	final String url_add = "./vistas/tutores/add.jsp";
 	final String url_edit = "./vistas/tutores/edit.jsp";
 	final String url_report = "./vistas/tutores/report.jsp";
+	final String url_filtros ="./vistas/tutores/filtros.jsp";
 	TutorService service = null;
 	List<Tutor> lista =  null;
 	Tutor obj = null;
@@ -59,13 +61,8 @@ public class TutorController extends HttpServlet {
 				sapellido = request.getParameter("txt_sapellido");
 				//fnacimiento
 				String fecha = request.getParameter("txt_fnacimiento");
-				String[] campos = fecha.split("-");
-				int anio, mes , dia;  //yyyy-mm-dd
-				anio = Integer.parseInt(campos[0]);
-				mes = Integer.parseInt(campos[1]);
-				dia = Integer.parseInt(campos[2]);
 				
-				fnacimiento = LocalDate.of(anio, mes, dia);
+				fnacimiento = Utils._toLocalDate(fecha);
 				
 				telefono = request.getParameter("txt_telefono");
 				id_prov = Integer.parseInt(request.getParameter("cb_id_prov"));
@@ -102,13 +99,9 @@ public class TutorController extends HttpServlet {
 				sapellido = request.getParameter("txt_sapellido");
 				//fnacimiento
 				String fecha = request.getParameter("txt_fnacimiento");
-				String[] campos = fecha.split("-");
-				int anio, mes , dia;  //yyyy-mm-dd
-				anio = Integer.parseInt(campos[0]);
-				mes = Integer.parseInt(campos[1]);
-				dia = Integer.parseInt(campos[2]);
+
 				
-				fnacimiento = LocalDate.of(anio, mes, dia);
+				fnacimiento = Utils._toLocalDate(fecha);
 				
 				telefono = request.getParameter("txt_telefono");
 				id_prov = Integer.parseInt(request.getParameter("cb_id_prov"));
@@ -130,6 +123,18 @@ public class TutorController extends HttpServlet {
 				service = new TutorService();
 				lista = service.listar();
 				request.setAttribute("lista", lista);
+			}else if(accion.equalsIgnoreCase("filtros")) {
+				acceso = url_filtros;
+			}else if(accion.equalsIgnoreCase("generar")) {
+				String fini = request.getParameter("txt_fini");
+				String ffin = request.getParameter("txt_ffin");
+				String nombre_tutor = request.getParameter("txt_nombre");
+				service = new TutorService();
+				lista = service.filtrar(Utils._toLocalDate(fini),
+						Utils._toLocalDate(ffin), nombre_tutor);
+				request.setAttribute("lista", lista);
+				acceso = url_report;
+				
 			}
 			
 		} catch (Exception e) {

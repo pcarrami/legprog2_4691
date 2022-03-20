@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class TutorDao implements ITutorDao{
 	final String DELETE = "call pa_eliminar_tutor(?)";
 	final String GETBYID = "call pa_get_tutor(?)"; 
 	final String SEARCH = "call pa_buscar_tutores(?)";
+	final String FILTROS = "call pa_filtros_tutores(?,?,?)";
 	
 	public TutorDao(Connection cn) {
 		this.cn = cn;
@@ -205,6 +207,44 @@ public class TutorDao implements ITutorDao{
 				if(cs!=null) cs.close();
 			} catch (Exception e2) {
 				throw new Exception("Error en SQL - SEARCH: " + e2.getMessage());
+			}
+		}
+		
+		return lista;
+	}
+
+	@Override
+	public List<Tutor> filtrar(LocalDate fini, LocalDate ffin, String nombre) throws Exception {
+		lista = new ArrayList<Tutor>();
+		try {
+			cs = cn.prepareCall(FILTROS);
+			int i=1;
+			cs.setDate(i++, Date.valueOf(fini));
+			cs.setDate(i++, Date.valueOf(ffin));
+			cs.setString(i++, nombre);
+			rs = cs.executeQuery();
+			while(rs.next()) {
+				obj = new Tutor(
+						rs.getInt("id_tutor"),
+						rs.getString("dni"),
+						rs.getString("nombre"),
+						rs.getString("papellido"),
+						rs.getString("sapellido"),
+						rs.getDate("fnacimiento").toLocalDate(),
+						rs.getString("telefono"),
+						rs.getInt("id_prov"),
+						rs.getString("des_id_prov")
+						);
+				lista.add(obj);
+			}
+		} catch (Exception e) {
+			throw new Exception("Error en SQL - FILTROS: " + e.getMessage());
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(cs!=null) cs.close();
+			} catch (Exception e2) {
+				throw new Exception("Error en SQL - FILTROS: " + e2.getMessage());
 			}
 		}
 		

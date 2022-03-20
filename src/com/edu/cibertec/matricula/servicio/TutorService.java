@@ -1,5 +1,6 @@
 package com.edu.cibertec.matricula.servicio;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.edu.cibertec.matricula.dao.DaoManager;
@@ -33,5 +34,9 @@ public class TutorService {
 	
 	public List<Tutor> buscar(String valor) throws Exception {
 		return dao.buscar(valor);
+	}
+	
+	public List<Tutor> filtrar(LocalDate fini, LocalDate ffin, String nombre) throws Exception{
+		return dao.filtrar(fini, ffin, nombre);
 	}
 }
